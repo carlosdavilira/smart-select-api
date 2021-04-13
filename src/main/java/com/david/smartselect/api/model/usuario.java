@@ -10,7 +10,7 @@ import com.sun.istack.NotNull;
 
 @Entity
 @Table(name="usuario")
-public class usuario {
+public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,7 +62,7 @@ public class usuario {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		usuario other = (usuario) obj;
+		Usuario other = (Usuario) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;
