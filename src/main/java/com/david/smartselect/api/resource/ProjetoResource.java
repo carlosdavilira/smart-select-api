@@ -40,28 +40,21 @@ public class ProjetoResource {
 	
 	@GetMapping
 	public List<Projeto> listar(){
-		return projetoRepository.findAll();
+		return projetoService.listar();
 	}
 	
 	@GetMapping("/{codigo}")
-	public ResponseEntity buscarPeloCodigo(@PathVariable Long codigo) {
-		Optional projeto = projetoRepository.findById(codigo);		
-		return !projeto.isEmpty() ? ResponseEntity.ok().body(projeto) : ResponseEntity.notFound().build();
+	public ResponseEntity buscarPeloCodigo(@PathVariable Long codigo) {				
+		return projetoService.buscarPeloCodigo(codigo);
 	}
 	
 	@PostMapping
-	public ResponseEntity criar(@Valid @RequestBody Projeto projeto, HttpServletResponse response) {
-		Projeto projetoSalva = projetoRepository.save(projeto);
-		//devolver caminho no HEADER
-		publisher.publishEvent(new ResourceCreatedEvent(this, response, projeto.getCodigo()));
-		return ResponseEntity.status(HttpStatus.CREATED).body(projetoSalva);		
+	public ResponseEntity criar(@Valid @RequestBody Projeto projeto, HttpServletResponse response) {	
+		return ResponseEntity.ok(projetoService.criar(projeto, response));		
 	}
 	
 	@PutMapping("/{codigo}")
 	public ResponseEntity<Projeto> atualizar(@PathVariable Long codigo, @Valid @RequestBody Projeto categoria){		
 			return ResponseEntity.ok(projetoService.atualizar(codigo, categoria));
-		}
-	
-	
-	
+		}	
 }
