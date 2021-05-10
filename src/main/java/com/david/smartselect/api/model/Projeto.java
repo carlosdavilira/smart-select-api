@@ -28,7 +28,6 @@ public class Projeto {
 	private String tempos;
 	
 	
-	
 	public Long getCodigo() {
 		return codigo;
 	}
@@ -46,8 +45,14 @@ public class Projeto {
 	}
 	public void setTempos(String tempos) {
 		this.tempos = tempos;
-	}
+	}	
 	
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
