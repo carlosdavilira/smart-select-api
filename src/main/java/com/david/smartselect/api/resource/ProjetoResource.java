@@ -39,6 +39,7 @@ public class ProjetoResource {
 	private ProjetoService projetoService;
 	
 	
+	@CrossOrigin(maxAge= 10, origins = {"*"})
 	@GetMapping
 	public List<Projeto> listar(){
 		return projetoService.listar();
@@ -50,11 +51,13 @@ public class ProjetoResource {
 		return projetoService.buscarPeloCodigo(codigo);
 	}
 	
+	@CrossOrigin(maxAge= 10, origins = {"*"})
 	@PostMapping
 	public ResponseEntity criar(@Valid @RequestBody Projeto projeto, HttpServletResponse response) {	
 		return ResponseEntity.ok(projetoService.criar(projeto, response));		
 	}
 	
+	@CrossOrigin(maxAge= 10, origins = {"*"})
 	@PutMapping("/{codigo}")
 	public ResponseEntity<Projeto> atualizar(@PathVariable Long codigo, @Valid @RequestBody Projeto categoria){		
 			return ResponseEntity.ok(projetoService.atualizar(codigo, categoria));
