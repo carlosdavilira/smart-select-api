@@ -1,6 +1,8 @@
 package com.david.smartselect.api.service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -35,5 +37,14 @@ public class UsuarioService {
 		publisher.publishEvent(new ResourceCreatedEvent(this, response, usuario.getCodigo()));
 		return ResponseEntity.status(HttpStatus.CREATED).body(usuarioSalvo);		
 	}
+	
+	public ResponseEntity login(Usuario usuario) {
+		//List<Usuario> usuarios = usuarioRepository.findAll();
+		List<Usuario> usuarios =  usuarioRepository.findAll().stream().filter(
+				user -> user.getUsuario().equals(usuario.getUsuario()) && 
+				user.getSenha().equals(usuario.getSenha())).collect(Collectors.toList());
+		return !usuarios.isEmpty() ? ResponseEntity.ok().body(usuarios.get(0)) : ResponseEntity.ok().body(null);
+	}
+	
 
 }

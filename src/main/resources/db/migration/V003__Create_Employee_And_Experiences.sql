@@ -13,8 +13,8 @@ codigo BIGINT(20) primary key auto_increment,
 nome_empresa LONGTEXT not null,
 cargo LONGTEXT not null,
 atividades_realizadas LONGTEXT not null,
-inicio DATE null,
-fim DATE null,
+inicio VARCHAR(10) null,
+fim VARCHAR(10) null,
 codigo_colaborador BIGINT(20) null,
 FOREIGN KEY(codigo_colaborador) REFERENCES colaborador(codigo)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
