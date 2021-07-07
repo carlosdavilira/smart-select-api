@@ -35,10 +35,10 @@ public class Experiencia {
 	private String atividadesRealizadas;	
 		
 	@Column(name="inicio")
-	private Date inicio;
+	private String inicio;
 	
 	@Column(name="fim")
-	private Date fim;
+	private String fim;
 	
 	@ManyToOne	
 	@JoinColumn(name = "codigo_colaborador")
@@ -79,19 +79,19 @@ public class Experiencia {
 		this.atividadesRealizadas = atividadesRealizadas;
 	}
 
-	public Date getInicio() {
+	public String getInicio() {
 		return inicio;
 	}
 
-	public void setInicio(Date inicio) {
+	public void setInicio(String inicio) {
 		this.inicio = inicio;
 	}
 
-	public Date getFim() {
+	public String getFim() {
 		return fim;
 	}
 
-	public void setFim(Date fim) {
+	public void setFim(String fim) {
 		this.fim = fim;
 	}
 

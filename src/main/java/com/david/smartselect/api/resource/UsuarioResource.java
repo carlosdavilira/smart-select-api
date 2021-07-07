@@ -37,6 +37,12 @@ public class UsuarioResource {
 	}
 	
 	@CrossOrigin(maxAge= 10, origins = {"*"})
+	@PostMapping("/login")
+	public ResponseEntity login(@RequestBody Usuario usuario) {				
+		return usuarioService.login(usuario);
+	}
+	
+	@CrossOrigin(maxAge= 10, origins = {"*"})
 	@PostMapping
 	public ResponseEntity criar(@Valid @RequestBody Usuario usuario, HttpServletResponse response) {	
 		return ResponseEntity.ok(usuarioService.criar(usuario, response));		
