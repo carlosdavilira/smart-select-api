@@ -2,6 +2,7 @@ package com.david.smartselect.api.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -56,6 +57,11 @@ public class ColaboradorService {
 		BeanUtils.copyProperties(colaborador, colaboradorSalvo.get(), "codigo");
 		colaboradorRepository.save(colaboradorSalvo.get());
 		return colaboradorSalvo.get();
+	}
+
+	public List<Colaborador> buscarPeloCodigoUsuario(Long codigo) {
+		List<Colaborador> colaboradores = colaboradorRepository.findAll();		
+		return colaboradores.stream().filter( usuario -> usuario.getCodigoUsuario().getCodigo() == codigo).collect(Collectors.toList());
 	}
 	
 	

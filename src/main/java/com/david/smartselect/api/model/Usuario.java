@@ -21,6 +21,9 @@ public class Usuario {
 	
 	@NotNull
 	private String senha;
+	
+	@NotNull
+	private String tipo;
 
 	public String getUsuario() {
 		return usuario;
@@ -44,6 +47,15 @@ public class Usuario {
 
 	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
+	}
+
+	
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	@Override
