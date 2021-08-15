@@ -50,6 +50,12 @@ public class ColaboradorResource {
 		return colaboradorService.buscarPeloCodigo(codigo);
 	}
 	
+	@CrossOrigin(maxAge= 10, origins = {"*"})
+	@PostMapping("/getByUser")
+	public List<Colaborador> buscarPeloCodigoUsuario(@Valid @RequestBody Colaborador colaborador) {				
+		return colaboradorService.buscarPeloCodigoUsuario(colaborador.getCodigoUsuario().getCodigo());
+	}
+	
 	
 	@CrossOrigin(maxAge= 10, origins = {"*"})
 	@PostMapping
@@ -58,9 +64,9 @@ public class ColaboradorResource {
 	}
 	
 	@CrossOrigin(maxAge= 10, origins = {"*"})
-	@PutMapping("/{codigo}")
-	public ResponseEntity<Colaborador> atualizar(@PathVariable Long codigo, @Valid @RequestBody Colaborador colaborador){		
-			return ResponseEntity.ok(colaboradorService.atualizar(codigo, colaborador));
+	@PostMapping("/update")
+	public ResponseEntity<Colaborador> atualizar( @Valid @RequestBody Colaborador colaborador){		
+			return ResponseEntity.ok(colaboradorService.atualizar(colaborador.getCodigo(), colaborador));
 		}	
 	
 	
